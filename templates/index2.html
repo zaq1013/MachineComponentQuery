@@ -15,7 +15,11 @@
             <button type="submit">查詢</button>
         </form>
     </div>
-
+    <div id="home-link">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='home-icon.png') }}" alt="Home">
+        </a>
+    </div>
     
     <div class="tables-container">
         <div class="table" id="bomdiv">

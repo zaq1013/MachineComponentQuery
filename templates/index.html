@@ -31,7 +31,11 @@
             </div>
         </form>
     </div>
-    
+    <div id="home-link">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='home-icon.png') }}" alt="Home">
+        </a>
+    </div>
     <div class="tables-container">
         {% if show_result_table %}
         <div class="table" id="resultTable">

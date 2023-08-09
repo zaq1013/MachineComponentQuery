@@ -155,3 +155,21 @@ th[data-sort].desc .sort-arrow {
     transform: rotate(0deg);
 }
 
+#home-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+#home-link img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#home-link img:hover {
+    filter: brightness(80%);
+}
