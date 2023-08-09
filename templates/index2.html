@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles2.css') }}">
+    <title>自動報價系統查詢</title>
+</head>
+<body>
+    <div class="center">
+        <h1>機台零件包及料號詳細</h1>
+        <form action="{{ url_for('component', machine_number=machine_number) }}" method="post" class="search-form">
+            <label for="machine_number">機號：</label>
+            <input type="text" id="machine_number" name="machine_number" value="{{ machine_number }}" required>
+            <button type="submit">查詢</button>
+        </form>
+    </div>
+
+    
+    <div class="tables-container">
+        <div class="table" id="bomdiv">
+            <h2>BOM表</h2> 
+            <button id="toggleButton1">展開/收縮</button>
+            <button class="export-csv-button" data-type="bom">匯出 CSV</button>
+            <table id="bomTable">
+                <tr>
+                    <th>機號</th>
+                    <th>工單ID</th>
+                    <th>可選材料</th>
+                    <th>說明</th>
+                    <th>組別</th>
+                    <th>用量</th>
+                    <th>父件展</th>
+                </tr>
+                {% for row in bom_rows %}
+                <tr>
+                    <td>{{ row.sbom_code }}</td>
+                    <td>{{ row.sbom_lot }}</td>
+                    <td>{{ row.sbom_comp }}</td>
+                    <td>{{ row.sbom_desc }}</td>
+                    <td>{{ row.sbom_group }}</td>
+                    <td>{{ row.sbom_qty_per }}</td>
+                    <td>{{ row.sbom_par }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="table" id="bomdiv2">
+            <h2>零件包</h2>
+            <button id="toggleButton2">展開/收縮</button>
+            <button class="export-csv-button" data-type="part">匯出 CSV</button>
+            <table id="partTable">
+                <tr>
+                    <th>機號</th>
+                    <th>工單ID</th>
+                    <th>可選材料</th>
+                    <th>說明</th>
+                    <th>組別</th>
+                    <th>用量</th>
+                    <th>零件包編號</th>
+                </tr>
+                {% for row in part_rows %}
+                <tr>
+                    <td>{{ row.sbom_code }}</td>
+                    <td>{{ row.sbom_lot }}</td>
+                    <td>{{ row.sbom_comp }}</td>
+                    <td>{{ row.sbom_desc }}</td>
+                    <td>{{ row.sbom_group }}</td>
+                    <td>{{ row.sbom_qty_per }}</td>
+                    <td>{{ row.sbom_code_par }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ url_for('static', filename='script2.js') }}"></script>
+</html>
