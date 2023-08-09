@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, make_response
 import pyodbc
-import csv
-import io
 
 app = Flask(__name__)
 
