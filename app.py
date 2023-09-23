@@ -3,10 +3,10 @@ import pyodbc
 
 app = Flask(__name__)
 
-server = '77.0.0.151'
-database = 'plQuote_train'
-username = 'plis'
-password = 'spl_20765242'
+server = ''
+database = ''
+username = ''
+password = ''
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
